@@ -38,8 +38,9 @@ make to build the kernel
 dmesg to obtain the output for printk lines  
 
 
-## Output:
+
 ```
+Output:
 [  280.089997]   CMPE 283 Assignment 1 Module Start
 [  280.090003]   Pinbased Controls MSR: 0x0
 [  280.090005]   External Interrupt Exiting: Can set=No, Can clear=Yes
