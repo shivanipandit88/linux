@@ -40,14 +40,14 @@ dmesg to obtain the output for printk lines
 
 ```
 Output:
-[  280.089997] CMPE 283 Assignment 1 Module Start
-[  280.090003] Pinbased Controls MSR: 0x0
+[  280.089997]   CMPE 283 Assignment 1 Module Start
+[  280.090003]   Pinbased Controls MSR: 0x0
 [  280.090005]   External Interrupt Exiting: Can set=No, Can clear=Yes
 [  280.090006]   NMI Exiting: Can set=No, Can clear=Yes
 [  280.090007]   Virtual NMIs: Can set=No, Can clear=Yes
 [  280.090008]   Activate VMX Preemption Timer: Can set=No, Can clear=Yes
 [  280.090009]   Process Posted Interrupts: Can set=No, Can clear=Yes
-[  280.090011] Entry Controls MSR: 0x0
+[  280.090011]   Entry Controls MSR: 0x0
 [  280.090012]   Load Debug Controls: Can set=No, Can clear=Yes
 [  280.090013]   IA-32e mode guest: Can set=No, Can clear=Yes
 [  280.090013]   Entry to SMM: Can set=No, Can clear=Yes
@@ -60,7 +60,7 @@ Output:
 [  280.090019]   Load IA32_RTIT_CTL: Can set=No, Can clear=Yes
 [  280.090020]   Load CET state: Can set=No, Can clear=Yes
 [  280.090021]   Load PKRS: Can set=No, Can clear=Yes
-[  280.090023] Exit Controls MSR: 0x0
+[  280.090023]   Exit Controls MSR: 0x0
 [  280.090031]   Save debug controls: Can set=No, Can clear=Yes
 [  280.090032]   Host address-space size: Can set=No, Can clear=Yes
 [  280.090033]   Load IA32_PERF_GLOBAL_CTRL: Can set=No, Can clear=Yes
@@ -74,7 +74,7 @@ Output:
 [  280.090052]   Conceal VMX from PT: Can set=No, Can clear=Yes
 [  280.090053]   Clear IA32_RTIT_CTL: Can set=No, Can clear=Yes
 [  280.090053]   Load CET state: Can set=No, Can clear=Yes
-[  280.090055] Primary Processor based Controls MSR: 0x0
+[  280.090055]   Primary Processor based Controls MSR: 0x0
 [  280.090056]   Interrupt-window exiting: Can set=No, Can clear=Yes
 [  280.090056]   Use TSC offsetting: Can set=No, Can clear=Yes
 [  280.090057]   HLT exiting: Can set=No, Can clear=Yes
@@ -96,7 +96,7 @@ Output:
 [  280.090065]   MONITOR exiting: Can set=No, Can clear=Yes
 [  280.090065]   PAUSE exiting: Can set=No, Can clear=Yes
 [  280.090066]   Activate secondary controls: Can set=No, Can clear=Yes
-[  280.090067] Secondary Processor based Controls MSR: 0x0
+[  280.090067]   Secondary Processor based Controls MSR: 0x0
 [  280.090068]   Virtualize APIC accesses: Can set=No, Can clear=Yes
 [  280.090068]   Enable EPT: Can set=No, Can clear=Yes
 [  280.090069]   Descriptor-table exiting: Can set=No, Can clear=Yes
@@ -124,7 +124,7 @@ Output:
 [  280.090080]   Use TSC scaling: Can set=No, Can clear=Yes
 [  280.090081]   Enable user wait and pause: Can set=No, Can clear=Yes
 [  280.090081]   Enable ENCLV exiting: Can set=No, Can clear=Yes
-[  282.200210] CMPE 283 Assignment 1 Module Exits
+[  282.200210]   CMPE 283 Assignment 1 Module Exits
 ```
 
 
