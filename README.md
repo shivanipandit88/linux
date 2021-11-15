@@ -23,8 +23,6 @@ make -j 4 to build the new kernel
 sudo make INSTALL_MOD_STRIP=1 modules_install to install the modules
 sudo make install to install the kernel
 I faced an issue when configuring the kernel as I was working on the VM installed in my windows (as windows doesn’t have a boot menu there were issues with the config files) so I loaded the Linux OS from Dual Boot mode. 
-```
-
 
 ## Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585 )
 Build and run the module that queries processor capabilities: (Wrote code for the Primary VM Based Controls and Secondary VM Based Controls by referring to Professor's boilerplate code and SDM modules.)
@@ -37,6 +35,7 @@ sudo sysctl kernel.dmesg_restrict=0
 dmesg to obtain the output for printk lines
 
 
+```
 Output:
 [  280.089997] CMPE 283 Assignment 1 Module Start
 [  280.090003] Pinbased Controls MSR: 0x0
@@ -123,7 +122,7 @@ Output:
 [  280.090081]   Enable user wait and pause: Can set=No, Can clear=Yes
 [  280.090081]   Enable ENCLV exiting: Can set=No, Can clear=Yes
 [  282.200210] CMPE 283 Assignment 1 Module Exits
-
+```
 
 
 
