@@ -29,7 +29,7 @@ I faced an issue when configuring the kernel as I was working on the VM installe
 ## Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585 )
 
 Build and run the module that queries processor capabilities: (Wrote code for the Primary VM Based Controls and Secondary VM Based Controls by referring to Professor's boilerplate code and SDM modules.)  
-Create CMPE-283 directory inside linux directory and copy the Makefile and cmpe283-1.c file provided by the Professor  
+Create `CMPE-283` directory inside linux directory and copy the Makefile and cmpe283-1.c file provided by the Professor  
 Append the licence information at the end of cmpe283-1.c  
 make to build the kernel  
 `sudo insmod cmpe283-1.ko` to install the module  
