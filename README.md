@@ -3,39 +3,39 @@
 
 ## Shivani Pandit : (Email : shivani.pandit@sjsu.edu , Student ID: 015925273)
 
-Build and install new kernel version:
-Fork the Git repo torvalds/linux to my own account
-git clone https://github.com/shivanipandit88/linux.git to clone it locally into linux and cd into the new directory
-uname -a : give the current running linux version 
-`cp /boot/config-5.13.0-21-generic .config` to copy the current boot config locally
-`sudo apt install gcc bison flex libssl-dev` to install the necessary prerequisites for installing the kernel
-`sudo apt install make`
-make oldconfig to copy the current boot config into the new one (kept the enter key pressed as per the Professor’s suggestion to get default new values)
-make prepare
-`scripts/config --set-str SYSTEM_TRUSTED_KEYS ""` By default, the make config was trying to sign the kernel modules with a Canonical private key, which obviously I don't have. The fix was to manually set this
-`scripts/config --disable SYSTEM_REVOCATION_KEYS` - to disable the revocation keys
-`sudo apt install dwarves` to fix the error -
-BTF: .tmp_vmlinux.btf: pahole (pahole) is not available
-Failed to generate BTF for vmlinux
-Try to disable CONFIG_DEBUG_INFO_BTF
-make: *** [Makefile:1106: vmlinux] Error 1
-make -j 4 modules to build all the new kernel modules
-make -j 4 to build the new kernel
-`sudo make INSTALL_MOD_STRIP=1 modules_install` to install the modules
-`sudo make install` to install the kernel
-I faced an issue when configuring the kernel as I was working on the VM installed in my windows (as windows doesn’t have a boot menu there were issues with the config files) so I loaded the Linux OS from Dual Boot mode. 
+Build and install new kernel version:  
+Fork the Git repo torvalds/linux to my own account  
+git clone https://github.com/shivanipandit88/linux.git to clone it locally into linux and cd into the new directory  
+uname -a : give the current running linux version   
+`cp /boot/config-5.13.0-21-generic .config` to copy the current boot config locally  
+`sudo apt install gcc bison flex libssl-dev` to install the necessary prerequisites for installing the kernel  
+`sudo apt install make`  
+make oldconfig to copy the current boot config into the new one (kept the enter key pressed as per the Professor’s suggestion to get default new values)  
+make prepare  
+`scripts/config --set-str SYSTEM_TRUSTED_KEYS ""` By default, the make config was trying to sign the kernel modules with a Canonical private key, which obviously I don't have.   The fix was to manually set this  
+`scripts/config --disable SYSTEM_REVOCATION_KEYS` - to disable the revocation keys  
+`sudo apt install dwarves` to fix the error -  
+BTF: .tmp_vmlinux.btf: pahole (pahole) is not available  
+Failed to generate BTF for vmlinux  
+Try to disable CONFIG_DEBUG_INFO_BTF  
+make: *** [Makefile:1106: vmlinux] Error 1  
+make -j 4 modules to build all the new kernel modules  
+make -j 4 to build the new kernel  
+`sudo make INSTALL_MOD_STRIP=1 modules_install` to install the modules  
+`sudo make install` to install the kernel  
+I faced an issue when configuring the kernel as I was working on the VM installed in my windows (as windows doesn’t have a boot menu there were issues with the config files) so I loaded the Linux OS from Dual Boot mode.   
 
 
 ## Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585 )
 
-Build and run the module that queries processor capabilities: (Wrote code for the Primary VM Based Controls and Secondary VM Based Controls by referring to Professor's boilerplate code and SDM modules.)
-Create CMPE-283 directory inside linux directory and copy the Makefile and cmpe283-1.c file provided by the Professor
-Append the licence information at the end of cmpe283-1.c
-make to build the kernel
-`sudo insmod cmpe283-1.ko` to install the module
-`sudo rmmod cmpe283-1` to remove the module
-`sudo sysctl kernel.dmesg_restrict=0`
-dmesg to obtain the output for printk lines
+Build and run the module that queries processor capabilities: (Wrote code for the Primary VM Based Controls and Secondary VM Based Controls by referring to Professor's boilerplate code and SDM modules.)  
+Create CMPE-283 directory inside linux directory and copy the Makefile and cmpe283-1.c file provided by the Professor  
+Append the licence information at the end of cmpe283-1.c  
+make to build the kernel  
+`sudo insmod cmpe283-1.ko` to install the module  
+`sudo rmmod cmpe283-1` to remove the module  
+`sudo sysctl kernel.dmesg_restrict=0`  
+dmesg to obtain the output for printk lines  
 
 
 ```
