@@ -1,7 +1,7 @@
 # Division of Work:
  
-```
-#Shivani Pandit : (Email : shivani.pandit@sjsu.edu , Student ID: 015925273)
+
+## Shivani Pandit : (Email : shivani.pandit@sjsu.edu , Student ID: 015925273)
 Build and install new kernel version:
 Fork the Git repo torvalds/linux to my own account
 git clone https://github.com/shivanipandit88/linux.git to clone it locally into linux and cd into the new directory
@@ -25,8 +25,8 @@ sudo make install to install the kernel
 I faced an issue when configuring the kernel as I was working on the VM installed in my windows (as windows doesn’t have a boot menu there were issues with the config files) so I loaded the Linux OS from Dual Boot mode. 
 ```
 
-```
-#Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585 )
+
+## Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585 )
 Build and run the module that queries processor capabilities: (Wrote code for the Primary VM Based Controls and Secondary VM Based Controls by referring to Professor's boilerplate code and SDM modules.)
 Create CMPE-283 directory inside linux directory and copy the Makefile and cmpe283-1.c file provided by the Professor
 Append the licence information at the end of cmpe283-1.c
@@ -35,7 +35,6 @@ sudo insmod cmpe283-1.ko to install the module
 sudo rmmod cmpe283-1 to remove the module
 sudo sysctl kernel.dmesg_restrict=0
 dmesg to obtain the output for printk lines
-```
 
 
 Output:
