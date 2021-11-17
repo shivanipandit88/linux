@@ -19,7 +19,7 @@ BTF: .tmp_vmlinux.btf: pahole (pahole) is not available
 Failed to generate BTF for vmlinux  
 Try to disable CONFIG_DEBUG_INFO_BTF  
 make: *** [Makefile:1106: vmlinux] Error 1  
-`make -j 4` modules to build all the new kernel modules  
+`make -j 4 modules` to build all the new kernel modules  
 `make -j 4` to build the new kernel  
 `sudo make INSTALL_MOD_STRIP=1 modules_install` to install the modules  
 `sudo make install` to install the kernel  
