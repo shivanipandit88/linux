@@ -142,26 +142,27 @@ Step3: Another issue faced was that I tried to construct the "cpuid" module inst
 STEPS TO EMULATE ASSIGNMENT FUNCTIONALITY:
 
 To clone the github repository in local directory.
-Execute '''cd linux'''
+Execute ```cd linux```
 We need to run the following commands to load the modules:
-'''
+```
 rmmod kvm-intel;
 rmmod kvm;
 make M=arch/x86/kvm modules;
 insmod arch/x86/kvm/kvm.ko;
 insmod arch/x86/kvm/kvm-intel.ko;
-'''
+```
 
 Once the modules are loaded, we need to start the inner Virtual Machine using **qemu**. In order to do so, we run the following command: 
-'''qemu-system-x86_64 -m 2048 -drive file=ubuntu.qcow,format=qcow2 -enable-kvm -smp 2,sockets=1,cores=1,threads=2 -d cpu_reset -no-fd=bootchk'''
+```qemu-system-x86_64 -m 2048 -drive file=ubuntu.qcow,format=qcow2 -enable-kvm -smp 2,sockets=1,cores=1,threads=2 -d cpu_reset -no-fd=bootchk```
 The above command assumes that you have already created a disk with ubuntu installed before booting the machine.
-Once the inner VM starts, one can either run the custom program or simply execute the instruction '''cpuid -l 0x4FFFFFFF'''. This command will be responsible to invoke the particular leaf function.
+Once the inner VM starts, one can run the custom program or execute the instruction ```cpuid -l 0x4FFFFFFF```.
+This command will be responsible to invoke the particular leaf function.
 
 Following scripts have been modified along with the comments in the code to emulate the functionality as required for the assignment:
-'''
+```
 https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/vmx/vmx.c
 https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/cpuid.c
-'''
+```
 
 COMMENTS ON EXITS:
 
@@ -176,8 +177,7 @@ There are several guides for kernel developers and users. These guides can
 be rendered in a number of formats, like HTML and PDF. Please read
 Documentation/admin-guide/README.rst first.
 
-In order to build the documentation, use ``make htmldocs`` or
-``make pdfdocs``.  The formatted documentation can also be read online at:
+In order to build the documentation, use ```make htmldocs``` or ```make pdfdocs```.  The formatted documentation can also be read online at:
 
     https://www.kernel.org/doc/html/latest/
 
