@@ -128,7 +128,7 @@ dmesg to obtain the output for printk lines
 ```
 
 
-##CMPE283 - Assignment 2
+## CMPE283 - Assignment 2
 
 **Steps Followed to Complete the Assignment:** 
 Step1: Identify the functions which are responsible for handling VM Exits. 
@@ -164,7 +164,7 @@ https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/vmx/vmx.c
 https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/cpuid.c
 ```
 
-##Comments on number of exits observed:
+## Comments on Exits Observed:
 
 An arbitrary number of exits based on the time after VM boot which executes the cpuid instruction in the inner VM.
 These exits seem stable on executing cpuid multiple times. Number of exits as well as processing time increases linearly on repeated execution of the same exit instruction.
