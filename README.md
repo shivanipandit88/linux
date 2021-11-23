@@ -130,7 +130,7 @@ dmesg to obtain the output for printk lines
 
 ## CMPE283 - Assignment 2
 
-Steps Followed to Complete the Assignment:
+Difficulties Faced when Completing the Assignment:
 
 **Step1**: Identify the functions which are responsible for handling VM Exits. 
 To identify the "vm_handle_exit" from vmx.c and "kvm_emulate_cpuid" as the two target functions.
