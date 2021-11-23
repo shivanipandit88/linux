@@ -164,9 +164,8 @@ https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/vmx/vmx.c
 https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/cpuid.c
 ```
 
-COMMENTS ON EXITS:
-
-I encountered an arbitrary number of exits based on the time after VM boot that I execute the cpuid instruction in the inner VM.
+Number of Exits Observed:
+An arbitrary number of exits based on the time after VM boot which executes the cpuid instruction in the inner VM.
 These exits seem stable on executing cpuid multiple times. Number of exits as well as processing time increases linearly on repeated execution of the same exit instruction.
 Roughly 10698558 exits were observed on the full VM boot with a processing time of 10407133758.
 
