@@ -140,7 +140,7 @@ vmx.c contains all potential exits as well as their respective exit handling fun
 
 **Step3**: Another issue faced was that the "cpuid" module was constructed instead of the "kvm" module.
 
-## STEPS TO EMULATE THE FUNCTIONALITY OF THE ASSIGNMENT:
+## STEPS TAKEN TO COMPLETE THE ASSIGNMENT:
 To clone the github repository in local directory.
 Execute ```cd linux```
 We need to run the following commands to load the modules:
