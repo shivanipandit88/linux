@@ -131,16 +131,16 @@ dmesg to obtain the output for printk lines
 ## CMPE283 - Assignment 2
 
 **Steps Followed to Complete the Assignment:** 
-Step1: Identify the functions which are responsible for handling VM Exits. 
+**Step1**: Identify the functions which are responsible for handling VM Exits. 
+
 To identify the "vm_handle_exit" from vmx.c and "kvm_emulate_cpuid" as the two target functions.
 vmx.c contains all potential exits as well as their respective exit handling functions. The "vm handle exit" function is called whenever a VM exit occurs. This function is in charge of delegating exit handling to one of the handler functions indicated in the map. The function to be tested for the assignment is "kvm emulate cpuid," which may be found in cpuid.c. A particular treatment of the leaf function "0x4FFFFFFF" is required.
 
-Step2: There were problems in setting up the inner VM. I had the Ubuntu host properly configured for assignment1. According to my understanding, I needed to deploy a VM on the host in order to test the VM exits.
+**Step2**: There were problems in setting up the inner VM. I had the Ubuntu host properly configured for assignment1. According to my understanding, I needed to deploy a VM on the host in order to test the VM exits.
 
-Step3: Another issue faced was that I tried to construct the "cpuid" module instead of the "kvm" module.
+**Step3**: Another issue faced was that the "cpuid" module was constructed instead of the "kvm" module.
 
-STEPS TO EMULATE ASSIGNMENT FUNCTIONALITY:
-
+STEPS TO EMULATE THE FUNCTIONALITY OF THE ASSIGNMENT:
 To clone the github repository in local directory.
 Execute ```cd linux```
 We need to run the following commands to load the modules:
