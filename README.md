@@ -128,7 +128,46 @@ dmesg to obtain the output for printk lines
 ```
 
 
+##CMPE283 - Assignment 2
 
+**Steps Followed to Complete the Assignment:** 
+Step1: Identify the functions which are responsible for handling VM Exits. 
+To identify the "vm_handle_exit" from vmx.c and "kvm_emulate_cpuid" as the two target functions.
+vmx.c contains all potential exits as well as their respective exit handling functions. The "vm handle exit" function is called whenever a VM exit occurs. This function is in charge of delegating exit handling to one of the handler functions indicated in the map. The function to be tested for the assignment is "kvm emulate cpuid," which may be found in cpuid.c. A particular treatment of the leaf function "0x4FFFFFFF" is required.
+
+Step2: There were problems in setting up the inner VM. I had the Ubuntu host properly configured for assignment1. According to my understanding, I needed to deploy a VM on the host in order to test the VM exits.
+
+Step3: Another issue faced was that I tried to construct the "cpuid" module instead of the "kvm" module.
+
+STEPS TO EMULATE ASSIGNMENT FUNCTIONALITY:
+
+To clone the github repository in local directory.
+Execute '''cd linux'''
+We need to run the following commands to load the modules:
+'''
+rmmod kvm-intel;
+rmmod kvm;
+make M=arch/x86/kvm modules;
+insmod arch/x86/kvm/kvm.ko;
+insmod arch/x86/kvm/kvm-intel.ko;
+'''
+
+Once the modules are loaded, we need to start the inner Virtual Machine using **qemu**. In order to do so, we run the following command: 
+'''qemu-system-x86_64 -m 2048 -drive file=ubuntu.qcow,format=qcow2 -enable-kvm -smp 2,sockets=1,cores=1,threads=2 -d cpu_reset -no-fd=bootchk'''
+The above command assumes that you have already created a disk with ubuntu installed before booting the machine.
+Once the inner VM starts, one can either run the custom program or simply execute the instruction '''cpuid -l 0x4FFFFFFF'''. This command will be responsible to invoke the particular leaf function.
+
+Following scripts have been modified along with the comments in the code to emulate the functionality as required for the assignment:
+'''
+https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/vmx/vmx.c
+https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/cpuid.c
+'''
+
+COMMENTS ON EXITS:
+
+I encountered an arbitrary number of exits based on the time after VM boot that I execute the cpuid instruction in the inner VM.
+These exits seem stable on executing cpuid multiple times. Number of exits as well as processing time increases linearly on repeated execution of the same exit instruction.
+Roughly 10698558 exits were observed on the full VM boot with a processing time of 10407133758.
 
 Linux kernel
 ============
