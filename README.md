@@ -170,6 +170,51 @@ An arbitrary number of exits based on the time after VM boot which executes the 
 These exits seem stable on executing cpuid multiple times. Number of exits as well as processing time increases linearly on repeated execution of the same exit instruction.
 Roughly 10698558 exits were observed on the full VM boot with a processing time of 10407133758.
 
+
+# Assignment-3 CMPE 283
+## Issues faced while completing the assignment:
+
+The goal of this assignment was to write a new leaf function in CPUID Emulation code that accepts an exit number as input and stores it in the ecx register.
+The application must return the number of exits for the exit number provided as input.
+The major challenge was to figure out how many exits were specified in the Intel SDM and how many exits were supported by the KVM.
+Since then, SDM has listed a total of 65 exit types. Exit codes vary from 0 to 68. Exits 35,38,42, and 65 are not included in the Intel SDM.
+To solve the issue at hand, a leaf function "0x4FFFFFFE is created."
+Also made a list of invalid exits and added the previously listed exits to it. Another list of length 69, with indexes ranging from 0 to 68, was formed to keep track of all exits.
+When the leaf function was executed, a check was performed to see if it was one of the exits not mentioned in SDM or an exit with a number larger than 68. If the number is larger than 68, it could be an exit supported by KVM but not listed in SDM.
+In order to execute the leaf function following command is needed: "cpuid -l 0x4FFFFFFE -s exitNumber"
+
+## STEPS TO TAKEN TO COMPLETE THE ASSIGNMENT:
+To clone the github repository in local directory.
+Execute ```cd linux```
+We need to run the following commands to load the modules:
+```
+rmmod kvm-intel;
+rmmod kvm;
+make M=arch/x86/kvm modules;
+insmod arch/x86/kvm/kvm.ko;
+insmod arch/x86/kvm/kvm-intel.ko;
+```
+
+## Comments on the Exits Observed:
+
+Based on the time after VM boot that I executed the cpuid instruction in the inner VM, I encountered an arbitrary number of exits.
+After running cpuid several times, these exits appear to be reliable. The number of exits and processing time both grow linearly when the same exit command is executed several times.
+On a full VM boot, about 10698556 exits are recorded with a processing time of 10407133761.
+Exit number 28 was the most often used, closely followed by exit number 30.
+There were several exits with a count of 0, indicating that they did not occur during the VM boot.
+Top exit counts:
+```
+Exit 28: 1071770
+Exit 30: 958254
+Exit 10: 541792
+```
+More details of all exits can be found at https://github.com/shivanipandit88/linux/blob/master/withEPT.txt
+The following scripts have been changed with suitable code comments to correctly imitate the functionality of the assignment:
+```
+https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/vmx/vmx.c
+https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/cpuid.c
+```
+
 Linux kernel
 ============
 
