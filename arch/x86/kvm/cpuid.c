@@ -1075,7 +1075,7 @@ EXPORT_SYMBOL_GPL(kvm_cpuid);
 
 atomic_long_t cyclesSpentInExit = ATOMIC_LONG_INIT(0);
 atomic_t numberOfExits = ATOMIC_INIT(0);
-
+atomic_t num_exits_per_reason[69] ;
 
 int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 {
@@ -1087,7 +1087,7 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 	eax = kvm_rax_read(vcpu);
 	ecx = kvm_rcx_read(vcpu);
 
-	/*Code changes for assignment
+	/*Code changes for assignment 2
 	 */
 	if(eax == 0x4FFFFFFF){
 		long cycleTime = atomic_long_read(&cyclesSpentInExit);
@@ -1097,7 +1097,48 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 		ebx = high32Bits;
 		ecx = low32Bits;
 		edx = 0;	
-	} else{
+	}
+	/*
+	 * Changes for assignment 3
+	 */
+	else if(eax== 0x4FFFFFFE)
+	{
+		int i;
+		atomic_t total_exit;
+		/*
+		 * Running the for loop for checking the frequency of each exit
+		 */
+		for(i=0;i<69;i++)
+		{
+			atomic_add(atomic_read(&num_exits_per_reason[i]), &total_exit);
+			printk("Exit reason: %d , Number of exits: %d" , i, atomic_read(&num_exits_per_reason[i]));
+		}
+		/*
+		 * If exit reason not present in SDM
+		 */
+		if(ecx<0 || ecx>68 || ecx==35 || ecx==38 || ecx==42 || ecx==65) {
+			eax=ebx=ecx=0;
+			edx=0xFFFFFFF;	
+		} else{
+		    /*
+		     * If exit reason present in KVM and SDM
+		     */
+		    if(ecx!=3 && ecx!=4 && ecx!=6 && ecx!=11 && ecx!=16 && ecx!=17 && ecx!=34 && ecx!=36 && ecx!=41 && ecx!=51 && ecx!=63 								&& ecx!=64 && ecx!=66){
+			printk("CPUID(0x4FFFFFFE), exit number %d = %d\n",(int)ecx,atomic_read(&num_exits_per_reason[(int)ecx]));
+			
+			eax=atomic_read(&num_exits_per_reason[(int)ecx]);
+			ebx=0;
+			ecx=0;
+			edx=0;			
+		     } else{
+			/*
+		     	 * If exit reason not present in KVM and SDM
+		     	 */
+			eax=ebx=ecx=edx=0;
+		     }		
+		}	
+	} 
+	else{
 		kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, true);	
 	}
 	kvm_rax_write(vcpu, eax);
@@ -1110,4 +1151,4 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 EXPORT_SYMBOL_GPL(kvm_emulate_cpuid);
 EXPORT_SYMBOL(cyclesSpentInExit);
 EXPORT_SYMBOL(numberOfExits);
-
+EXPORT_SYMBOL(num_exits_per_reason);
