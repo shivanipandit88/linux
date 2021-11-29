@@ -198,11 +198,9 @@ insmod arch/x86/kvm/kvm-intel.ko;
 ## Comments on the Exits Observed:
 
 Based on the time after VM boot that I executed the cpuid instruction in the inner VM, I encountered an arbitrary number of exits.
-
 After running cpuid several times, these exits appear to be reliable. The number of exits and processing time both grow linearly when the same exit command is executed several times.
 
 On a full VM boot, about 10698556 exits are recorded with a processing time of 10407133761.
-
 Exit number 28 was the most often used, closely followed by exit number 30.
 
 There were several exits with a count of 0, indicating that they did not occur during the VM boot.
