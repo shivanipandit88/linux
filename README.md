@@ -128,7 +128,7 @@ dmesg to obtain the output for printk lines
 ```
 
 
-## CMPE283 - Assignment 2
+# CMPE283 - Assignment 2
 
 Process and Problems faced in the Assignment:
 
@@ -171,7 +171,7 @@ These exits seem stable on executing cpuid multiple times. Number of exits as we
 Roughly 10698558 exits were observed on the full VM boot with a processing time of 10407133758.
 
 
-# Assignment-3 CMPE 283
+# CMPE283 - Assignment 3
 ## Issues faced while completing the assignment:
 
 The goal of this assignment was to write a new leaf function in CPUID Emulation code that accepts an exit number as input and stores it in the ecx register.
