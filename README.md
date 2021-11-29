@@ -176,10 +176,13 @@ Roughly 10698558 exits were observed on the full VM boot with a processing time 
 
 The goal of this assignment was to write a new leaf function in CPUID Emulation code that accepts an exit number as input and stores it in the ecx register.
 The application must return the number of exits for the exit number provided as input.
+
 The major challenge was to figure out how many exits were specified in the Intel SDM and how many exits were supported by the KVM.
 Since then, SDM has listed a total of 65 exit types. Exit codes vary from 0 to 68. Exits 35,38,42, and 65 are not included in the Intel SDM.
+
 To solve the issue at hand, a leaf function "0x4FFFFFFE is created."
 Also made a list of invalid exits and added the previously listed exits to it. Another list of length 69, with indexes ranging from 0 to 68, was formed to keep track of all exits.
+
 When the leaf function was executed, a check was performed to see if it was one of the exits not mentioned in SDM or an exit with a number larger than 68. If the number is larger than 68, it could be an exit supported by KVM but not listed in SDM.
 In order to execute the leaf function following command is needed: "cpuid -l 0x4FFFFFFE -s exitNumber"
 
