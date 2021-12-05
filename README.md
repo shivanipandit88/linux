@@ -26,7 +26,7 @@ make: *** [Makefile:1106: vmlinux] Error 1
 I faced an issue when configuring the kernel as I was working on the VM installed in my windows (as windows doesn’t have a boot menu there were issues with the config files) so I loaded the Linux OS from Dual Boot mode.   
 
 
-## Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585 )
+## Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585)
 
 Build and run the module that queries processor capabilities: (Wrote code for the Primary VM Based Controls and Secondary VM Based Controls by referring to Professor's boilerplate code and SDM modules.)  
 Create `CMPE-283` directory inside linux directory and copy the Makefile and cmpe283-1.c file provided by the Professor  
@@ -220,6 +220,37 @@ The following scripts have been changed with suitable code comments to correctly
 https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/vmx/vmx.c
 https://github.com/shivanipandit88/linux/blob/master/arch/x86/kvm/cpuid.c
 ```
+
+# CMPE283 Assignment 4:
+
+
+## Division of Work:
+
+###   1. Shivani Pandit : (Email : shivani.pandit@sjsu.edu, Student ID: 015925273)
+I researched the behaviour of exits that were happening when EPT was not 0. 
+             
+
+###   2. Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585)
+I researched the behaviour of exits that were happening when EPT was set to 0. 
+
+### Steps: (Same as assignment 3)
+
+## Questions
+1) Include a sample of your print of exit count output from dmesg from “with ept” and “without ept”.
+  - With EPT
+  ![alt text](https://github.com/shivanipandit88/linux/blob/master/Assignment-4/With_EPT.png "With ept")
+
+  - Without EPT
+  ![alt text](https://github.com/shivanipandit88/linux/blob/master/Assignment-4/Without_EPT.png "without ept")
+
+
+2) What did you learn from the count of exits? Was the count what you expected? If not, why not?
+3) What changed between the two runs (ept vs no-ept)?
+   As observed, the number of exits increases by about 200,000 when EPT is set to 0. The count was expected to increase by a significant amount and it did increase as per the results. The increase in the exit count is observed for the following reasons:
+    - When EPT is set to zero, we follow the shadow paging approach instead of the nested paging approach followed when the EPT is not set to zero.
+    - Now, during shadow paging approach, there are 3 kinds of exits which are enabled and occur due to which the exit count is expected to increase. These 3 types are : CR3 exits, Page Fault Exits and TLB Flush exits.
+    - These 3 types of exits occur in addition to the EPT violation exit that occurs usually in the Nested paging approach. Hence, the number of exits are more in this approach and the difference can hence be explained.
+
 
 Linux kernel
 ============
