@@ -231,7 +231,7 @@ I researched the behaviour of exits that were happening when EPT was not 0.
              
 
 ###   2. Chirag Rajpal : (Email : chiragbiharilal.rajpal@sjsu.edu , Student ID : 015951585)
-I researched the behaviour of exits that were happening when EPT was set to 0. 
+I researched on the behaviour of exits that were happening when EPT was set to 0. 
 
 ### Steps: (Same as assignment 3)
 
