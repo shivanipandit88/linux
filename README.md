@@ -203,7 +203,7 @@ insmod arch/x86/kvm/kvm-intel.ko;
 Based on the time after VM boot that I executed the cpuid instruction in the inner VM, I encountered an arbitrary number of exits.
 After running cpuid several times, these exits appear to be reliable. The number of exits and processing time both grow linearly when the same exit command is executed several times.
 
-On a full VM boot, about 10698556 exits are recorded with a processing time of 10407133761.
+On a full VM boot, about 10698556 exits are recorded with a processing time of 10407133758.
 Exit number 28 was the most often used, closely followed by exit number 30.
 
 There were several exits with a count of 0, indicating that they did not occur during the VM boot.
@@ -252,7 +252,7 @@ I researched the behaviour of exits that were happening when EPT was set to 0.
     - These 3 types of exits occur in addition to the EPT violation exit that occurs usually in the Nested paging approach. Hence, the number of exits are more in this approach and the difference can hence be explained.
 
 
-Linux kernel
+Linux Kernel
 ============
 
 There are several guides for kernel developers and users. These guides can
